@@ -4,7 +4,6 @@ import cssp.model.FetchUserPersonalDetails;
 import cssp.model.MatchUserCredential;
 
 public class DashboardEventController extends MatchUserCredential {
-
     public int tokenNumber;
     public void getToken(int token){
         setToken(token);
@@ -19,7 +18,7 @@ public class DashboardEventController extends MatchUserCredential {
             new FileuplodePage().frame.setVisible(true);
         }
         if (e.equals("myprofile")){
-            new FetchUserPersonalDetails().fetchUserPersonalDetails(tokenNumber);
+            new FetchUserPersonalDetails().fetchUserPersonalDetails(1);
             System.out.println("in if else condition : " + " " + tokenNumber);
         }
     }
