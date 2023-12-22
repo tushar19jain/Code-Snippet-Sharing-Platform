@@ -1,9 +1,13 @@
 package cssp.gui;
 
+import cssp.controller.AccountDeletionConfirmationController;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AccountDeletionConfirmationPage extends JDialog {
+public class AccountDeletionConfirmationPage extends JDialog implements ActionListener {
     final JLabel accountDeletionHeading;
     final JLabel accountDeletionInfo;
     final JLabel accountDeletionInfo2;
@@ -78,6 +82,7 @@ public class AccountDeletionConfirmationPage extends JDialog {
         confirm.setBackground(Color.decode("#FF5454"));
         confirm.setBounds(50,330,160,40);
         confirm.setBorder(BorderFactory.createEmptyBorder());
+        confirm.addActionListener(this);
 
         cancel = new JButton("Cancel");
         cancel.setFont(new Font("Verdana",Font.BOLD,12));
@@ -104,5 +109,12 @@ public class AccountDeletionConfirmationPage extends JDialog {
     System.out.println("Im am from gui" + " " + question);
      getSecurityQuestion.setText(question);
      setVisible(true);
+   }
+
+   @Override
+ public void actionPerformed(ActionEvent e) {
+    if (e.getSource().equals(confirm)){
+     new AccountDeletionConfirmationController().getEventSource("confirm",currentPasswordTextfiled.getText(),matchSecurityQuestion.getText());
+    }
    }
 }
