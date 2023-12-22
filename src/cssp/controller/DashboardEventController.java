@@ -2,6 +2,7 @@ package cssp.controller;
 import cssp.gui.FileuplodePage;
 import cssp.model.FetchUserPersonalDetails;
 import cssp.model.MatchUserCredential;
+import cssp.model.TokenManager;
 
 public class DashboardEventController extends MatchUserCredential {
     public int tokenNumber;
@@ -18,8 +19,7 @@ public class DashboardEventController extends MatchUserCredential {
             new FileuplodePage().frame.setVisible(true);
         }
         if (e.equals("myprofile")){
-            new FetchUserPersonalDetails().fetchUserPersonalDetails(1);
-            System.out.println("in if else condition : " + " " + tokenNumber);
+            new FetchUserPersonalDetails().fetchUserPersonalDetails(TokenManager.getToken());
         }
     }
 }

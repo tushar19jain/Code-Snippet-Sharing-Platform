@@ -1,9 +1,13 @@
 package cssp.gui;
 
+import cssp.controller.UserProfileManagementController;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class UserProfileManagementPage extends JFrame {
+public class UserProfileManagementPage extends JFrame implements ActionListener{
     final JPanel mainframe;
     final JLabel mainframeTitle;
     final JLabel mainframeTitle2;
@@ -82,6 +86,7 @@ public class UserProfileManagementPage extends JFrame {
         accountDeletion.setFocusable(false);
         accountDeletion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         accountDeletion.setBorder(BorderFactory.createEmptyBorder());
+        accountDeletion.addActionListener(this);
 
 
         ImageIcon userProfileIcon = new ImageIcon("src/cssp/gui/Assets/undraw_Male_avatar_g98d.png");
@@ -186,5 +191,12 @@ public class UserProfileManagementPage extends JFrame {
 
     public static void main(String[] args) {
         new UserProfileManagementPage().setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == accountDeletion){
+            new UserProfileManagementController().getEventSource("accountDeletion");
+        }
     }
 }

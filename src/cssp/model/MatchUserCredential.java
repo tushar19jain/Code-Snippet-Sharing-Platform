@@ -16,6 +16,7 @@ public class MatchUserCredential extends DatabaseController {
                 try {
                     uniqueToken = result.getInt(1);
                     System.out.println("Match user" + " " + uniqueToken);
+                    TokenManager.setToken(uniqueToken);
                     new FetchUserRealName().getUserRealName(uniqueToken);
                     new DashboardEventController().getToken(uniqueToken);
                 }catch (Exception e){

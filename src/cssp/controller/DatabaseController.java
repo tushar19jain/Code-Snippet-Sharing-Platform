@@ -10,6 +10,7 @@ public class DatabaseController {
     protected PreparedStatement matchCredential;
     protected PreparedStatement fetchUserRealName;
     protected PreparedStatement fetchPersonalInformation;
+    protected PreparedStatement fetchUserSecurityQuestion;
     public DatabaseController() {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
