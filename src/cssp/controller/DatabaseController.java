@@ -2,8 +2,6 @@
  * This class handles all the database related workings
  */
 package cssp.controller;
-import oracle.jdbc.proxy.annotation.Pre;
-
 import java.sql.*;
 public class DatabaseController {
     protected Connection con;
@@ -14,10 +12,12 @@ public class DatabaseController {
     protected PreparedStatement fetchPersonalInformation;
     protected PreparedStatement fetchUserSecurityQuestion;
     protected PreparedStatement matchSecurityAnswerAndPassword;
+    protected PreparedStatement createNewPost;
+    protected PreparedStatement fetchPost;
     public DatabaseController() {
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "tiger");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cssp", "tushar", "tushar");
         } catch (Exception e) {
             System.out.println("Error" + e);
         }

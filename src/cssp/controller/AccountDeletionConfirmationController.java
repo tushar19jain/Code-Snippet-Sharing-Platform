@@ -11,11 +11,8 @@ public class AccountDeletionConfirmationController{
             answer = ans;
             if (!password.isBlank()){
                 if (!answer.isBlank()){
-                    //System.out.println("confirmed");
-                    new MatchUserAccountDeletion().matchuserAccountDeletion(password,answer);
-                }
-                else {
-                    System.out.println("Answer doesn't match");
+                    new MatchUserAccountDeletion().matchuserAccountDeletion(password,answer);}
+                else {System.out.println("Answer doesn't match");
                 }
             }
             else {

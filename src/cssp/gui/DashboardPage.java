@@ -1,6 +1,7 @@
 package cssp.gui;
 
 import cssp.controller.DashboardEventController;
+import cssp.model.FetchPost;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,10 @@ public class DashboardPage extends JFrame implements ActionListener {
     final JLabel CsspLogo;
     final JButton myprofile;
     final JButton uplode;
+    final JButton my_files;
+    final JButton admin_support;
+    final JButton logout;
+    final JTextField searchbar;
     public DashboardPage(){
         setTitle("Code Snippet Sharing Platform - v1.0");
         setLayout(null);
@@ -22,6 +27,9 @@ public class DashboardPage extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.decode("#ffffff"));
         this.setBackground(Color.WHITE);
+        new FetchPost().fecthPost();
+
+        add(new PostFrame());
 
         sideLeftPanel = new JPanel(null);
         sideLeftPanel.setBackground(Color.LIGHT_GRAY);
@@ -43,8 +51,8 @@ public class DashboardPage extends JFrame implements ActionListener {
         name.setForeground(Color.BLACK);
         name.setBounds(350,30,180,30);
 
-        uplode = new JButton("+ Uplode File");
-        uplode.setBackground(Color.black);
+        uplode = new JButton("+ Create new");
+        uplode.setBackground(Color.decode("#1F1717"));
         uplode.setForeground(Color.WHITE);
         uplode.setFont(new Font("Monospace",Font.BOLD,16));
         sideLeftPanel.add(uplode);
@@ -54,19 +62,66 @@ public class DashboardPage extends JFrame implements ActionListener {
         uplode.setCursor(new Cursor(Cursor.HAND_CURSOR));
         uplode.addActionListener(this);
 
-        myprofile = new JButton("New profile");
-        myprofile.setBackground(Color.black);
-        myprofile.setForeground(Color.WHITE);
+        myprofile = new JButton("My Profile");
+        myprofile.setBackground(Color.LIGHT_GRAY);
+        myprofile.setForeground(Color.BLACK);
+        myprofile.setBorder(BorderFactory.createEmptyBorder());
         myprofile.setFont(new Font("Monospace",Font.BOLD,12));
         sideLeftPanel.add(myprofile);
-        myprofile.setBounds(30,350,180,40);
+        myprofile.setBounds(30,400,180,40);
         myprofile.setFocusable(false);
         myprofile.setBorder(BorderFactory.createEmptyBorder());
         myprofile.setCursor(new Cursor(Cursor.HAND_CURSOR));
         myprofile.addActionListener(this);
 
+        my_files = new JButton("My Files");
+        my_files.setBackground(Color.LIGHT_GRAY);
+        my_files.setForeground(Color.BLACK);
+        my_files.setBorder(BorderFactory.createEmptyBorder());
+        my_files.setFont(new Font("Monospace",Font.BOLD,12));
+        sideLeftPanel.add(my_files);
+        my_files.setBounds(30,450,180,40);
+        my_files.setFocusable(false);
+        my_files.setBorder(BorderFactory.createEmptyBorder());
+        my_files.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        my_files.addActionListener(this);
+
+        admin_support = new JButton("Admin support");
+        admin_support.setBackground(Color.LIGHT_GRAY);
+        admin_support.setForeground(Color.BLACK);
+        admin_support.setBorder(BorderFactory.createEmptyBorder());
+        admin_support.setFont(new Font("Monospace",Font.BOLD,12));
+        sideLeftPanel.add(admin_support);
+        admin_support.setBounds(30,720,180,40);
+        admin_support.setFocusable(false);
+        admin_support.setBorder(BorderFactory.createEmptyBorder());
+        admin_support.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        admin_support.addActionListener(this);
+
+
+        logout = new JButton("Log out");
+        logout.setBackground(Color.LIGHT_GRAY);
+        logout.setForeground(Color.BLACK);
+        logout.setBorder(BorderFactory.createEmptyBorder());
+        logout.setFont(new Font("Monospace",Font.BOLD,12));
+        sideLeftPanel.add(logout);
+        logout.setBounds(30,760,180,40);
+        logout.setFocusable(false);
+        logout.setBorder(BorderFactory.createEmptyBorder());
+        logout.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        logout.addActionListener(this);
+
+        ImageIcon searchIcon = new ImageIcon("src/cssp/gui/Assets/magnifying-glass.png");
+
+        searchbar = new JTextField("Search for code snippets");
+        searchbar.setBorder(BorderFactory.createEmptyBorder());
+        searchbar.setBackground(Color.decode("#E9E9E9"));
+        searchbar.setForeground(Color.black);
+        searchbar.setBounds(600,20,580,50);
+
         add(sideLeftPanel);
         add(greet);
+        add(searchbar);
         add(name);
     }
     public void fetchName (String Name){

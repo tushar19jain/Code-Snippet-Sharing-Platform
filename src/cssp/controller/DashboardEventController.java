@@ -1,9 +1,8 @@
 package cssp.controller;
-import cssp.gui.FileuplodePage;
 import cssp.model.FetchUserPersonalDetails;
 import cssp.model.MatchUserCredential;
 import cssp.model.TokenManager;
-
+import cssp.gui.FileUplodePage;
 public class DashboardEventController extends MatchUserCredential {
     public int tokenNumber;
     public void getToken(int token){
@@ -12,11 +11,10 @@ public class DashboardEventController extends MatchUserCredential {
 
     private void setToken(int token){
         tokenNumber = token;
-        System.out.println("set token" + " "+ tokenNumber);
     }
     public void getEventSource(String e){
         if (e.equals("uplode")){
-            new FileuplodePage().frame.setVisible(true);
+            new FileUplodePage().setVisible(true);
         }
         if (e.equals("myprofile")){
             new FetchUserPersonalDetails().fetchUserPersonalDetails(TokenManager.getToken());

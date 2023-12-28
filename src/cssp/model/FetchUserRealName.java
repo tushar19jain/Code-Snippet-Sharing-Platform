@@ -3,23 +3,17 @@ import cssp.controller.DatabaseController;
 import java.sql.ResultSet;
 import java.lang.String;
 import cssp.gui.DashboardPage;
-
-import javax.swing.*;
-
 public class FetchUserRealName extends DatabaseController{
-    public String realname;
+    public String realName;
     public void getUserRealName(int ID){
         try{
-            fetchUserRealName = con.prepareStatement("select user_firstname from cssp_user where (user_id = ? )");
+            fetchUserRealName = con.prepareStatement("select first_name from cssp_users where (user_id = ? )");
             fetchUserRealName.setInt(1,ID);
             ResultSet name = fetchUserRealName.executeQuery();
             while (name.next()){
-                realname =  name.getString("user_firstname");
-                new DashboardPage().fetchName(realname);
-                System.out.println(realname);
+                realName =  name.getString("first_name");
+                new DashboardPage().fetchName(realName);
             }
-        }catch (Exception error){
-            System.out.println(error);
-        }
+        }catch (Exception error){/* */}
     }
 }
