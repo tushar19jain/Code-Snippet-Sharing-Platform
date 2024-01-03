@@ -13,9 +13,10 @@ public class LoginPage implements ActionListener {
     final JLabel loginpagePassword;
     public JPasswordField loginpagePasswordTextfield;
     final JButton login;
-    final JLabel notYetRegistered;
+    final JButton notYetRegistered;
     final JLabel rightSideImage;
     final JPanel rightSidePanel;
+    final JButton forgetPassword;
     public LoginPage() {
         loginpage = new JFrame();
         loginpage.getContentPane().setBackground(Color.decode("#ffffff"));
@@ -60,10 +61,14 @@ public class LoginPage implements ActionListener {
         login.setBackground(Color.decode("#03A6FF"));
         login.setFocusable(false);
         login.addActionListener(this);
-        notYetRegistered = new JLabel("Not registered ? Register Now!");
-        notYetRegistered.setFont(new Font("Verdana", Font.PLAIN, 15));
+        notYetRegistered = new JButton("Not registered ? Register Now!");
+        notYetRegistered.setFont(new Font("Verdana", Font.PLAIN, 14));
         notYetRegistered.setForeground(Color.BLACK);
-        notYetRegistered.setBounds(280, 600, 280, 30);
+        notYetRegistered.setBackground(Color.white);
+        notYetRegistered.setForeground(Color.BLACK);
+        notYetRegistered.setBounds(1030, 600, 280, 30);
+        notYetRegistered.setBorder(BorderFactory.createEmptyBorder());
+        notYetRegistered.setFocusable(false);
 
         ImageIcon heroImage = new ImageIcon("src/cssp/gui/Assets/undraw_My_code_snippets_re_4adu-removebg-preview.png");
 
@@ -75,6 +80,15 @@ public class LoginPage implements ActionListener {
         rightSidePanel.setBackground(Color.decode("#6210E8"));
         rightSidePanel.add(rightSideImage);
 
+        forgetPassword = new JButton("Forget your password ??");
+        forgetPassword.setFont(new Font("Verdana",Font.PLAIN,14));
+        forgetPassword.setBounds(1080,700,190,30);
+        forgetPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        forgetPassword.setBackground(Color.decode("#ffffff"));
+        forgetPassword.setBorder(BorderFactory.createEmptyBorder());
+        forgetPassword.setForeground(Color.blue);
+        forgetPassword.setFocusable(false);
+
         loginpage.add(loginpageGreet);
         loginpage.add(loginpageUsername);
         loginpage.add(loginpageUsernameTextfield);
@@ -82,6 +96,8 @@ public class LoginPage implements ActionListener {
         loginpage.add(loginpagePasswordTextfield);
         loginpage.add(login);
         loginpage.add(rightSidePanel);
+        loginpage.add(notYetRegistered);
+        loginpage.add(forgetPassword);
     }
 
     @Override

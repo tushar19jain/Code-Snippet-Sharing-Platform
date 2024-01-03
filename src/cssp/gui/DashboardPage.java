@@ -2,6 +2,7 @@ package cssp.gui;
 
 import cssp.controller.DashboardEventController;
 import cssp.model.FetchPost;
+import cssp.model.FetchUserPostDetails;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,18 +19,19 @@ public class DashboardPage extends JFrame implements ActionListener {
     final JButton admin_support;
     final JButton logout;
     final JTextField searchbar;
+    public void fetchName (String Name){
+        System.out.println("In fetch name method" +" "+ Name);
+        name.setText(Name);
+    }
     public DashboardPage(){
         setTitle("Code Snippet Sharing Platform - v1.0");
         setLayout(null);
         setSize(1920,1080);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.decode("#ffffff"));
         this.setBackground(Color.WHITE);
-        new FetchPost().fecthPost();
-
-        add(new PostFrame());
 
         sideLeftPanel = new JPanel(null);
         sideLeftPanel.setBackground(Color.LIGHT_GRAY);
@@ -46,7 +48,7 @@ public class DashboardPage extends JFrame implements ActionListener {
         greet.setForeground(Color.BLACK);
         greet.setBounds(300,30,80,30);
 
-        name = new JLabel();
+        name = new JLabel("Tushar");
         name.setFont(new Font("Monospace",Font.BOLD,30));
         name.setForeground(Color.BLACK);
         name.setBounds(350,30,180,30);
@@ -123,11 +125,8 @@ public class DashboardPage extends JFrame implements ActionListener {
         add(greet);
         add(searchbar);
         add(name);
+      //  new FetchUserPostDetails().fetchUserPostDetails();
     }
-    public void fetchName (String Name){
-        name.setText(Name);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
       if (e.getSource() == uplode){

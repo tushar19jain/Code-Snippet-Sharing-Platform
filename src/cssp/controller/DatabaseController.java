@@ -14,10 +14,11 @@ public class DatabaseController {
     protected PreparedStatement matchSecurityAnswerAndPassword;
     protected PreparedStatement createNewPost;
     protected PreparedStatement fetchPost;
+    protected PreparedStatement fetchPostDetails;
     public DatabaseController() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cssp", "tushar", "tushar");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3300/cssp", "tushar", "tushar");
         } catch (Exception e) {
             System.out.println("Error" + e);
         }

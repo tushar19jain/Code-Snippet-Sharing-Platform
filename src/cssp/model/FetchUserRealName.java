@@ -12,6 +12,7 @@ public class FetchUserRealName extends DatabaseController{
             ResultSet name = fetchUserRealName.executeQuery();
             while (name.next()){
                 realName =  name.getString("first_name");
+                System.out.println(realName);
                 new DashboardPage().fetchName(realName);
             }
         }catch (Exception error){/* */}
